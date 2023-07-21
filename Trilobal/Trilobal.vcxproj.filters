@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{deee50fa-abb9-4619-ba54-c5a8202716fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\events">
+      <UniqueIdentifier>{ce4ff72e-54ce-4fef-9f7c-280bcc7255b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\core">
+      <UniqueIdentifier>{deb0d7ad-b83d-46be-a6f7-fc443de8f6d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\window">
+      <UniqueIdentifier>{02b2ab98-a41c-424e-8e9a-05af8623a751}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="core\Application.cpp">
+      <Filter>src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\log.cpp">
+      <Filter>src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="tlpch.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="window\WindowWindow.cpp">
+      <Filter>src\window</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="core\Application.h">
+      <Filter>src\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\core.h">
+      <Filter>src\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\EntryPoint.h">
+      <Filter>src\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\log.h">
+      <Filter>src\core</Filter>
+    </ClInclude>
+    <ClInclude Include="events\ApplicationEvent.h">
+      <Filter>src\events</Filter>
+    </ClInclude>
+    <ClInclude Include="events\event.h">
+      <Filter>src\events</Filter>
+    </ClInclude>
+    <ClInclude Include="events\KeyEvent.h">
+      <Filter>src\events</Filter>
+    </ClInclude>
+    <ClInclude Include="events\MouseEvent.h">
+      <Filter>src\events</Filter>
+    </ClInclude>
+    <ClInclude Include="tlpch.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="Trilobal.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="window\window.h">
+      <Filter>src\window</Filter>
+    </ClInclude>
+    <ClInclude Include="window\WindowsWindow.h">
+      <Filter>src\window</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
