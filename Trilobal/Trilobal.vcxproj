@@ -94,6 +94,7 @@
   <ItemGroup>
     <ClCompile Include="core\Application.cpp" />
     <ClCompile Include="core\log.cpp" />
+    <ClCompile Include="glad.c" />
     <ClCompile Include="tlpch.cpp" />
     <ClCompile Include="window\WindowWindow.cpp" />
   </ItemGroup>

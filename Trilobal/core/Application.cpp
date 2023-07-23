@@ -8,7 +8,7 @@
 namespace Trilobal {
 
 	Application::Application() {
-
+		m_window = unique_ptr<window>(window::create());
 	}
 
 	Application::~Application()
@@ -17,11 +17,10 @@ namespace Trilobal {
 	}
 
 	void Application::isRun() {
-		WindowResizeEvent e(1280, 768);
-		if (e.IsInCategory(EventCategoryApplication))
-			TL_CLIENT_TRACE(e);
-
-		while (true);
+		while (m_Running)
+		{
+			//m_window->setBackgroundColor();
+			m_window->OnUpdate();
+		}
 	}
-
 }

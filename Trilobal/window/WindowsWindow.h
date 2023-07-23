@@ -1,44 +1,43 @@
 #pragma once
 
-#include "window/window.h"
-
+#include <glad/glad.h>
 #include <glfw64/glfw3.h>
+
+#include "window/window.h"
 
 #pragma comment(lib,"glfw3.lib")
 
-namespace Trilobal
-{
-	class WindowsWindow : public window
+namespace Trilobal {
+	class windowsWindow : public window
 	{
 	public:
-		WindowsWindow(const windowProps& props);
-		virtual ~WindowsWindow();
+		windowsWindow(const WindowProps& props);
+		virtual ~windowsWindow();
+	public:
+		inline unsigned int getWidth() const override { return m_data.width; };
+		inline unsigned int getHeight() const  override { return m_data.height; };
 
 		void OnUpdate() override;
 
-		inline unsigned int getWidth() const override { return m_data.width; }
-		inline unsigned int getHeight() const override { return m_data.height; }
-
 		inline void setEventCallback(const eventCallbackFun& callback) override { m_data.eventCallback = callback; }
-		void setVSync(bool enabled) override = 0;
-		bool IsVSync() const override = 0;
-	private:
-		virtual void init(const windowProps& props);
+		void setVSync(bool enabled) override;
+		bool IsVSync() const override;
+	public:
+		virtual void Init(const WindowProps& props);	//初始化窗口
 		virtual void Shutdown();
+	public:
+		void setBackgroundColor(float r = 255.0f, float b = 255.0f, float g = 255.0f, float a = 1.0f) override;
 	private:
-		GLFWwindow* m_window;
-
-		struct windowData
+		struct WindowData
 		{
 			string title;
-			unsigned int width,height;
+			unsigned int width, height;
 			bool VSync;
 
-			eventCallbackFun eventCallback;
+			eventCallbackFun eventCallback;	//事件回调函数
 		};
-
-		windowData m_data;
+	private:
+		GLFWwindow* m_window;
+		WindowData m_data;
 	};
-
-
 }

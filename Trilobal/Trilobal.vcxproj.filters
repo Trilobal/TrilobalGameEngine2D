@@ -27,6 +27,7 @@
     <ClCompile Include="window\WindowWindow.cpp">
       <Filter>src\window</Filter>
     </ClCompile>
+    <ClCompile Include="glad.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core\Application.h">

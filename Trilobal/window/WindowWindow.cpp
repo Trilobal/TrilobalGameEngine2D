@@ -5,62 +5,80 @@ namespace Trilobal {
 
 	static bool s_GLFWInitialized = false;
 
-	/*
-	window* window::createWindow(const windowProps& props){
-		return new WindowsWindow(props);
-	}
-	*/
-	WindowsWindow::WindowsWindow(const windowProps& props){
-		init(props);
+	window* window::create(const WindowProps& props)
+	{
+		return new windowsWindow(props);
 	}
 
-	WindowsWindow::~WindowsWindow()
+	windowsWindow::windowsWindow(const WindowProps& props)
+	{
+		Init(props);
+	}
+
+	windowsWindow::~windowsWindow()
 	{
 		Shutdown();
 	}
 
-	void WindowsWindow::init(const windowProps& props)
+	void windowsWindow::Init(const WindowProps& props)
 	{
 		m_data.title = props.title;
-		m_data.width = props.m_width;
-		m_data.height = props.m_height;
+		m_data.width = props.width;
+		m_data.height = props.height;
 
-		TL_CORE_INFO("Createing window {0} ({1} {2})", props.title, props.m_width, props.m_height);
+		TL_CORE_INFO("Createing window : {0} ({1} {2})", props.title, props.width, props.height);
 
-		if (s_GLFWInitialized)
+		if (!s_GLFWInitialized)
 		{
 			int success = glfwInit();
-			//TL_CORE_ASSERT(success,"Could not initialize GLFW!");
+			TL_CORE_ASSERT(success, "Could not initialize GLFW");
+
 			s_GLFWInitialized = true;
 		}
 
-		m_window = glfwCreateWindow((int)props.m_width, (int)props.m_height, props.title.c_str(), nullptr, nullptr);
+		m_window = glfwCreateWindow((int)props.width, (int)props.height, props.title.c_str() , nullptr, nullptr);
+		if (m_window)
+			TL_CORE_INFO("Create Window Successfully");
+		else
+			TL_CORE_ERROR("Failed to create window");
 		glfwMakeContextCurrent(m_window);
-		//glfwSetFramebufferSizeCallback(m_window,&m_data);
+		glfwSetWindowUserPointer(m_window, &m_data);
 		setVSync(true);
+
+		if (glfwInit() != GLFW_TRUE)
+			cout << "Failed to initialize GLFW" << endl;
 	}
 
-	void WindowsWindow::Shutdown()
+	void windowsWindow::Shutdown()
 	{
 		glfwDestroyWindow(m_window);
 	}
 
-	void WindowsWindow::OnUpdate()
+	void windowsWindow::OnUpdate()
 	{
 		glfwPollEvents();
 		glfwSwapBuffers(m_window);
 	}
 
-	void WindowsWindow::setVSync(bool enabled)
+	//是否使用垂直同步
+	void windowsWindow::setVSync(bool enabled)
 	{
 		if (enabled)
 			glfwSwapInterval((int)enabled);
 		else
 			glfwSwapInterval((int)enabled);
+
+		m_data.VSync = enabled;
 	}
 
-	bool WindowsWindow::IsVSync() const
+	bool windowsWindow::IsVSync() const
 	{
-		return false;
+		return m_data.VSync;
+	}
+
+	void windowsWindow::setBackgroundColor(float r, float b, float g, float a)
+	{
+		glClearColor(r, g, b, a);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	}
 }
