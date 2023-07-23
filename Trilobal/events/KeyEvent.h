@@ -17,7 +17,7 @@ namespace Trilobal {
 		int m_KeyCode;
 	};
 
-	class  KeyPressendEvent : KeyEvent
+	class  KeyPressendEvent :public KeyEvent
 	{
 	public:
 		KeyPressendEvent(int keycode,int repeatCount) : KeyEvent(keycode),m_RepeatCount(repeatCount){	//构造函数，初始化参数表

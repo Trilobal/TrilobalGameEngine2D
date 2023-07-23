@@ -24,10 +24,12 @@
     <ClCompile Include="tlpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="window\WindowWindow.cpp">
+    <ClCompile Include="window\WindowsWindow.cpp">
       <Filter>src\window</Filter>
     </ClCompile>
-    <ClCompile Include="glad.c" />
+    <ClCompile Include="glad.c">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core\Application.h">

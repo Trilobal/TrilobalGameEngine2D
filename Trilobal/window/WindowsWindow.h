@@ -5,6 +5,10 @@
 
 #include "window/window.h"
 
+#include "events/ApplicationEvent.h"
+#include "events/MouseEvent.h"
+#include "events/KeyEvent.h"
+
 #pragma comment(lib,"glfw3.lib")
 
 namespace Trilobal {
@@ -19,7 +23,7 @@ namespace Trilobal {
 
 		void OnUpdate() override;
 
-		inline void setEventCallback(const eventCallbackFun& callback) override { m_data.eventCallback = callback; }
+		inline void setEventCallback(const eventCallbackFun& callback) override;
 		void setVSync(bool enabled) override;
 		bool IsVSync() const override;
 	public:

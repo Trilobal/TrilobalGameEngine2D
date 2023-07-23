@@ -13,6 +13,8 @@ namespace Trilobal {
 		virtual ~Application();
 
 		void isRun();
+
+		void onEvent(event& event);
 	private:
 		unique_ptr<window> m_window;
 		bool m_Running = true;
